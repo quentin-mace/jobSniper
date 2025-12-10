@@ -200,7 +200,7 @@ class JobApplication
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'applications')]
+    #[ORM\ManyToOne(inversedBy: 'jobApplications')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -237,11 +237,11 @@ class JobApplication
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\OneToMany(targetEntity: JobApplicationStatus::class, mappedBy: 'application', cascade: ['persist'], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: JobApplicationStatus::class, mappedBy: 'jobApplication', cascade: ['persist'], orphanRemoval: true)]
     #[ORM\OrderBy(['changedAt' => 'DESC'])]
     private Collection $statusHistory;
 
-    #[ORM\OneToMany(targetEntity: Reminder::class, mappedBy: 'application', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Reminder::class, mappedBy: 'jobApplication', orphanRemoval: true)]
     private Collection $reminders;
 }
 ```
@@ -319,29 +319,29 @@ enum ReminderTypeEnum: string
 
 ### 4.1 Routes Web
 
-| Route | Méthode | Controller | Description |
-|-------|---------|------------|-------------|
-| `/` | GET | HomeController::index | Page d'accueil |
-| `/register` | GET/POST | SecurityController::register | Inscription |
-| `/login` | GET/POST | SecurityController::login | Connexion |
-| `/logout` | GET | SecurityController::logout | Déconnexion |
-| `/dashboard` | GET | DashboardController::index | Tableau de bord |
-| `/applications` | GET | ApplicationController::index | Liste candidatures |
-| `/applications/new` | GET/POST | ApplicationController::new | Nouvelle candidature |
-| `/applications/{id}` | GET | ApplicationController::show | Détail candidature |
-| `/applications/{id}/edit` | GET/POST | ApplicationController::edit | Modifier candidature |
-| `/applications/{id}/archive` | POST | ApplicationController::archive | Archiver candidature (soft delete) |
-| `/applications/{id}/unarchive` | POST | ApplicationController::unarchive | Désarchiver candidature |
-| `/applications/{id}/status` | POST | ApplicationController::changeStatus | Changer statut |
-| `/reminders` | GET | ReminderController::index | Liste candidatures à relancer |
-| `/settings` | GET/POST | SettingsController::index | Paramètres |
+| Route                            | Méthode | Controller                             | Description |
+|----------------------------------|---------|----------------------------------------|-------------|
+| `/`                              | GET | HomeController::index                  | Page d'accueil |
+| `/register`                      | GET/POST | SecurityController::register           | Inscription |
+| `/login`                         | GET/POST | SecurityController::login              | Connexion |
+| `/logout`                        | GET | SecurityController::logout             | Déconnexion |
+| `/dashboard`                     | GET | DashboardController::index             | Tableau de bord |
+| `/jobApplications`               | GET | JobApplicationController::index        | Liste candidatures |
+| `/jobApplications/new`           | GET/POST | JobApplicationController::new          | Nouvelle candidature |
+| `/jobApplications/{id}`          | GET | JobApplicationController::show         | Détail candidature |
+| `/jobApplications/{id}/edit`     | GET/POST | JobApplicationController::edit         | Modifier candidature |
+| `/jobApplications/{id}/archive`  | POST | JobApplicationController::archive      | Archiver candidature (soft delete) |
+| `/jobApplications/{id}/unarchive` | POST | JobApplicationController::unarchive    | Désarchiver candidature |
+| `/jobApplications/{id}/status`       | POST | JobApplicationController::changeStatus | Changer statut |
+| `/reminders`                     | GET | ReminderController::index              | Liste candidatures à relancer |
+| `/settings`                      | GET/POST | SettingsController::index              | Paramètres |
 
 ### 4.2 Turbo Frames
 
 Pour une expérience SPA-like, certaines parties seront chargées via Turbo Frames :
 
-- `application-list` : Liste des candidatures (filtrable sans rechargement)
-- `application-status` : Badge de statut (changement rapide)
+- `job-application-list` : Liste des candidatures (filtrable sans rechargement)
+- `job-application-status` : Badge de statut (changement rapide)
 - `reminders-panel` : Panneau des rappels
 - `stats-widget` : Widgets de statistiques
 
@@ -363,8 +363,8 @@ Pour une expérience SPA-like, certaines parties seront chargées via Turbo Fram
 
 ```php
 #[IsGranted('ROLE_USER')]
-#[IsGranted('APPLICATION_VIEW', subject: 'application')]
-public function show(Application $application): Response
+#[IsGranted('JOB_APPLICATION_VIEW', subject: 'jobApplication')]
+public function show(JobApplication $application): Response
 ```
 
 ### 5.3 Validation
