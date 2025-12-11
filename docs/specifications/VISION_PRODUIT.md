@@ -12,6 +12,29 @@
 4. **Analyser** - Statistiques pour optimiser sa recherche d'emploi
 5. **Gagner du temps** - Interface rapide et intuitive
 
+## 📋 Fonctionnalités Principales
+
+### Cœur de l'Application (MVP)
+- **Gestion des candidatures** : Créer, modifier, archiver des candidatures
+- **Suivi par statuts** : 7 statuts clairs (Brouillon, Envoyée, À relancer, Relancé, Offre reçue, Acceptée, Refusée)
+- **Système de rappels** : Notifications automatiques pour relancer au bon moment
+- **Dashboard** : Vue d'ensemble avec statistiques en temps réel
+- **Liste intelligente** : Filtres, tri et recherche pour retrouver facilement ses candidatures
+- **Authentification** : Compte personnel sécurisé
+
+### Fonctionnalités Avancées (V1.1+)
+- **Rappels automatiques par email** : Envoi d'emails de relance aux recruteurs
+- **Vue Kanban** : Organisation visuelle avec glisser-déposer
+- **Statistiques avancées** : Taux de réponse, conversion, temps moyen
+- **Graphiques d'évolution** : Visualisation des tendances
+- **Export de données** : CSV et JSON
+
+### Futur (V2.0)
+- **Personnalisation** : Statuts et champs personnalisés
+- **Mode sombre** : Confort visuel
+- **PWA Mobile** : Application installable
+- **Intégrations** : LinkedIn, emails, etc.
+
 ## 👥 Personas
 
 ### 1. Marie - En Reconversion
