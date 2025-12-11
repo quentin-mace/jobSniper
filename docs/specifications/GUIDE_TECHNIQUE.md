@@ -16,6 +16,7 @@
 | **Interactivité** | HTMX | 2.x | SPA-like sans complexité JS |
 | **JS léger** | Stimulus | 3.x | Composants riches ponctuels |
 | **CSS** | Tailwind CSS | 3.x | Rapide à développer, moderne |
+| **UI Components** | DaisyUI | 4.x | Composants Tailwind prêts à l'emploi |
 | **Emails** | Symfony Mailer | - | Intégré, fiable |
 
 ### Évolution Future (V2.0)
@@ -37,7 +38,8 @@
 ┌─────────────────────────────────────────┐
 │           Navigateur Web                │
 │  ┌───────────────────────────────────┐  │
-│  │ HTMX + Stimulus + Tailwind CSS    │  │
+│  │ HTMX + Stimulus                   │  │
+│  │ Tailwind CSS + DaisyUI            │  │
 │  └───────────────────────────────────┘  │
 └─────────────────────────────────────────┘
                    │
@@ -419,7 +421,7 @@ ON job_application(applied_at);
 ### 8.4 Assets
 
 - Asset Mapper compile et minifie en production
-- CDN pour Tailwind CSS (MVP) puis build local (V1.1)
+- CDN pour Tailwind CSS + DaisyUI (MVP) puis build local (V1.1)
 - Images optimisées et lazy loading
 
 ---
@@ -574,6 +576,7 @@ Navigateur → Caddy Reverse Proxy
 - [Symfony 8.0](https://symfony.com/doc/current/index.html)
 - [HTMX](https://htmx.org/docs/)
 - [Tailwind CSS](https://tailwindcss.com/docs)
+- [DaisyUI](https://daisyui.com/)
 - [PostgreSQL](https://www.postgresql.org/docs/)
 
 ### Tutoriels Symfony
